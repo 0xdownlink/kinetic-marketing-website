@@ -1,0 +1,61 @@
+.band {
+  padding: 5rem 0 6rem;
+  border-top: 1px solid var(--rule);
+  background:
+    radial-gradient(
+      ellipse 60% 80% at 80% 50%,
+      color-mix(in oklab, var(--accent) 16%, transparent),
+      transparent 60%
+    ),
+    var(--paper);
+  position: relative;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: flex-start;
+  max-width: 860px;
+}
+
+.title {
+  font-family: var(--font-fraunces), serif;
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1;
+  font-variation-settings:
+    "opsz" 144,
+    "SOFT" 30;
+  max-width: 20ch;
+}
+
+.title :global(em) {
+  font-style: italic;
+  color: var(--accent);
+  font-variation-settings:
+    "opsz" 144,
+    "SOFT" 100,
+    "WONK" 1;
+}
+
+.body {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 58ch;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.micro {
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.8rem;
+  color: var(--ink-mute);
+  letter-spacing: 0.02em;
+}

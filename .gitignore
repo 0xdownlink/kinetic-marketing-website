@@ -1,0 +1,14 @@
+node_modules/
+.next/
+.vercel/
+next-env.d.ts
+coverage/
+*.tsbuildinfo
+.DS_Store
+
+# Environment files: secrets never get committed
+.env
+.env.*
+
+# Personal Claude Code overrides
+.claude/settings.local.json
