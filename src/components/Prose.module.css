@@ -1,0 +1,226 @@
+.wrap {
+  padding: 3rem 0 6rem;
+}
+
+.wrapInner {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Sidebar TOC */
+.toc {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-right: 1.25rem;
+  border-right: 1px solid var(--rule);
+}
+
+.tocTitle {
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.tocList {
+  list-style: none;
+  counter-reset: toc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.tocList li {
+  counter-increment: toc;
+}
+
+.tocList a {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.3rem 0;
+  transition: color 0.18s var(--ease-out);
+}
+
+.tocList a::before {
+  content: counter(toc, decimal-leading-zero);
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.75rem;
+  color: var(--ink-mute);
+  width: 24px;
+  flex-shrink: 0;
+}
+
+.tocList a:hover {
+  color: var(--accent);
+}
+
+.tocMeta {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.7rem;
+  color: var(--ink-mute);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Prose */
+.prose {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.prose h1 {
+  font-family: var(--font-fraunces), serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 0.98;
+  font-variation-settings:
+    "opsz" 144,
+    "SOFT" 20,
+    "WONK" 0;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.prose > p.lede {
+  font-family: var(--font-fraunces), serif;
+  font-size: clamp(1.2rem, 1.5vw, 1.4rem);
+  line-height: 1.4;
+  font-variation-settings:
+    "opsz" 30,
+    "SOFT" 40;
+  color: var(--ink);
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  margin: 1rem 0 2.5rem;
+}
+
+.prose section {
+  padding: 2.5rem 0;
+  border-bottom: 1px dashed var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  scroll-margin-top: 100px;
+}
+
+.prose section:last-child {
+  border-bottom: 0;
+}
+
+.prose h2 {
+  font-family: var(--font-fraunces), serif;
+  font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+  line-height: 1.08;
+  font-variation-settings:
+    "opsz" 40,
+    "SOFT" 40;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+.prose h2::before {
+  content: attr(data-num);
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  padding-top: 4px;
+}
+
+.prose h3 {
+  font-family: var(--font-fraunces), serif;
+  font-size: 1.15rem;
+  font-variation-settings:
+    "opsz" 20,
+    "SOFT" 40;
+  margin-top: 0.5rem;
+}
+
+.prose p {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--ink);
+  max-width: 62ch;
+}
+
+.prose ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 1rem;
+}
+
+.prose ul li {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.prose ul li::before {
+  content: "—";
+  color: var(--accent);
+}
+
+.prose a {
+  color: var(--ink);
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 1px;
+}
+
+.prose a:hover {
+  color: var(--accent);
+}
+
+.placeholder {
+  padding: 1.5rem 1.75rem;
+  background: color-mix(in oklab, var(--accent) 6%, var(--paper));
+  border-left: 3px solid var(--accent);
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.85rem;
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+.placeholder strong {
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* =============== RESPONSIVE =============== */
+@media (max-width: 900px) {
+  .wrapInner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .toc {
+    position: static;
+    border-right: 0;
+    border-bottom: 1px solid var(--rule);
+    padding-right: 0;
+    padding-bottom: 1.5rem;
+  }
+}

@@ -1,0 +1,226 @@
+.footer {
+  position: relative;
+  background: var(--paper-deep);
+  border-top: 1px solid var(--rule);
+  color: var(--ink);
+  overflow: hidden;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    to right,
+    color-mix(in oklab, var(--ink) 4%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 80px 100%;
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  max-width: var(--col-max);
+  margin: 0 auto;
+  padding: 5rem var(--gutter) 4rem;
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) 2fr;
+  gap: 4rem;
+}
+
+.lead {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mark {
+  color: var(--accent);
+  width: 44px;
+}
+
+.tag {
+  font-family: var(--font-fraunces), serif;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  font-variation-settings:
+    "opsz" 80,
+    "SOFT" 40;
+  color: var(--ink);
+  max-width: 24ch;
+}
+
+.email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  color: color-mix(in oklab, var(--ink) 75%, transparent);
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid color-mix(in oklab, var(--ink) 20%, transparent);
+  width: fit-content;
+  transition:
+    color 0.2s var(--ease-out),
+    border-color 0.2s var(--ease-out);
+}
+
+.email:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.arrow {
+  transition: transform 0.2s var(--ease-out);
+}
+
+.email:hover .arrow {
+  transform: translateX(3px);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.col ul {
+  list-style: none;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.col li a {
+  font-size: 0.9375rem;
+  color: color-mix(in oklab, var(--ink) 78%, transparent);
+  transition: color 0.18s var(--ease-out);
+}
+
+.col li a:hover {
+  color: var(--accent);
+}
+
+.credit {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  width: fit-content;
+}
+
+.creditDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.credit p {
+  font-size: 0.9rem;
+  line-height: 1.35;
+  color: var(--ink-soft);
+}
+
+.credit strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.base {
+  position: relative;
+  border-top: 1px solid color-mix(in oklab, var(--ink) 12%, transparent);
+  padding: 1.5rem 0;
+}
+
+.baseInner {
+  max-width: var(--col-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: color-mix(in oklab, var(--ink) 55%, transparent);
+  text-transform: uppercase;
+}
+
+.entity {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.made {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: blink 1.8s infinite;
+}
+
+@keyframes blink {
+  0%,
+  85%,
+  100% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.3;
+  }
+}
+
+/* Giant wordmark — sits at the bottom as an editorial foot-bar */
+.giantWordmark {
+  position: relative;
+  overflow: hidden;
+  line-height: 0.85;
+  margin-bottom: -0.1em;
+  pointer-events: none;
+}
+
+.giantWordmark span {
+  display: block;
+  text-align: center;
+  font-family: var(--font-fraunces), serif;
+  font-weight: 400;
+  font-variation-settings:
+    "opsz" 144,
+    "SOFT" 100,
+    "WONK" 1;
+  font-size: clamp(4rem, 22vw, 20rem);
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px color-mix(in oklab, var(--ink) 14%, transparent);
+  padding: 0 var(--gutter);
+}
+
+@media (max-width: 960px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 3.5rem var(--gutter) 2.5rem;
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1.5rem;
+  }
+  .entity {
+    flex-basis: 100%;
+    text-align: left;
+  }
+}
