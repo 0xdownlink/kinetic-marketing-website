@@ -9,11 +9,7 @@ import { cx } from "@/lib/cx";
 import { JsonLd } from "@/components/JsonLd";
 import { pageJsonLd } from "@/lib/structured-data";
 
-export const metadata: Metadata = {
-  title: "Kinetic Agents: custom agents for your business",
-  description:
-    "The third part of Kinetic, after Sites and Social: agents that take on more of the day-to-day work behind your business. Same rules: they propose, you approve.",
-};
+export const metadata: Metadata = pageMetadata("agents");
 
 export default function AgentsPage() {
   return (
@@ -101,7 +97,7 @@ export default function AgentsPage() {
         secondaryHref={studio.audit}
         microcopy="Agents follow the same propose-and-approve rules as everything else in Kinetic."
       />
-      <JsonLd data={pageJsonLd("agents" as any)} />
+      <JsonLd data={pageJsonLd("agents")} />
     </>
   );
 }
