@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {
   COMPANY,
+  COMPANY_URL,
   CONTACT_EMAIL,
   LEGAL_ENTITY,
   footerNav,
@@ -30,9 +31,17 @@ export default function Footer() {
           <div className={styles.credit}>
             <span className={styles.creditDot} aria-hidden="true" />
             <p>
-              Kinetic Labs is created by <strong>{COMPANY}</strong>, an
-              AI-first company building AI agents, online presence and online
-              marketing.
+              Kinetic Labs is created by{" "}
+              <a
+                href={COMPANY_URL}
+                className={styles.companyLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {COMPANY}
+              </a>
+              , an AI-first company building AI agents, online presence and
+              online marketing.
             </p>
           </div>
           <a href={mailto()} className={styles.email}>
@@ -61,10 +70,18 @@ export default function Footer() {
 
       <div className={styles.base}>
         <div className={styles.baseInner}>
-          <p>
-            © {year} {LEGAL_ENTITY}
+          <p>© {year} {LEGAL_ENTITY}</p>
+          <p className={styles.entity}>
+            Kinetic Labs · Created by{" "}
+            <a
+              href={COMPANY_URL}
+              className={styles.companyLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {COMPANY}
+            </a>
           </p>
-          <p className={styles.entity}>Kinetic Labs · Created by {COMPANY}</p>
           <p className={styles.made}>
             <span className={styles.indicator} aria-hidden="true" /> You approve
             every change
