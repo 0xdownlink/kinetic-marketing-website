@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ClosingCTA from "@/components/ClosingCTA";
 import s from "@/components/Inner.module.css";
-import PageHero from "@/components/PageHero";
+import StudioHero from "@/components/StudioHero";
 import { Arrow } from "@/components/Mark";
 import { COMPANY, STUDIO_URL, studio } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
@@ -68,9 +68,7 @@ const capabilities = [
 export default function StudioPage() {
   return (
     <>
-      <PageHero
-        section="§ 03"
-        kicker="Kinetic Studio"
+      <StudioHero
         title={
           <>
             One dashboard. <em>Your entire digital presence.</em>
@@ -96,7 +94,7 @@ export default function StudioPage() {
         <a href={studio.audit} className="btn btn--ghost">
           Free website check first
         </a>
-      </PageHero>
+      </StudioHero>
 
       <section className={s.section} aria-labelledby="problem-heading">
         <div className="container">
