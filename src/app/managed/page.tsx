@@ -40,12 +40,12 @@ export default function ManagedPage() {
         kicker="Kinetic Managed"
         title={
           <>
-            Rather not do it yourself? <em>We&apos;ll run it.</em>
+            Rather not do it yourself? <em>We'll run it.</em>
           </>
         }
         subtitle={
           <p>
-            Kinetic Managed is Kinetic run by {COMPANY}&apos;s team. We set up
+            Kinetic Managed is Kinetic run by {COMPANY}'s team. We set up
             your record and site, keep your site and posts current, and check in
             with you on anything that needs your answer. You approve what goes
             out, without learning any tool.
@@ -62,7 +62,7 @@ export default function ManagedPage() {
           <header className={s.head}>
             <div className="section-tag">
               <span>§ 01</span>
-              <span>What&apos;s included</span>
+              <span>What's included</span>
             </div>
             <h2 id="included-heading" className={s.h2}>
               The jobs nobody <em>has time for.</em>
@@ -92,8 +92,8 @@ export default function ManagedPage() {
             <h2 id="who-heading">A person is accountable.</h2>
             <div className={s.asideBody}>
               <p>
-                {COMPANY} created Kinetic Agents and runs Managed on the same
-                system you&apos;d use yourself, under the same rules: nothing
+                {COMPANY} created Kinetic Labs and runs Managed on the same
+                system you'd use yourself, under the same rules: nothing
                 invented, and nothing goes out without your OK.
               </p>
               <p>Managed is for owners who want results, not a tool.</p>
