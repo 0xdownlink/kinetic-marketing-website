@@ -15,7 +15,12 @@ export default function CreatorBanner() {
           </span>
           .
         </p>
-        <a href={COMPANY_URL} className={styles.link}>
+        <a
+          href={COMPANY_URL}
+          className={styles.link}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Visit {COMPANY}
           <span aria-hidden="true"> →</span>
         </a>
