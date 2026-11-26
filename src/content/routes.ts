@@ -18,7 +18,7 @@ export const routes = {
     title: "Kinetic: keep your local business right online",
     description:
       "Your website and social posts, kept right every week from the AI app you already use. You approve every change. Nothing is invented. Created by Anth.Tech.",
-    kicker: "Kinetic Agents",
+    kicker: "Kinetic Labs",
     priority: 1,
   },
   howItWorks: {
@@ -51,6 +51,14 @@ export const routes = {
     description:
       "Anth.Tech's team runs Kinetic for your business. You approve what goes out, without learning a tool.",
     kicker: "Kinetic Managed",
+    priority: 0.8,
+  },
+  agents: {
+    path: "/agents",
+    title: "Kinetic Agents: custom agents for your business",
+    description:
+      "The third part of Kinetic, after Sites and Social: agents that take on more of the day-to-day work. Same rules: they propose, you approve.",
+    kicker: "Kinetic Agents",
     priority: 0.8,
   },
   accuracy: {
