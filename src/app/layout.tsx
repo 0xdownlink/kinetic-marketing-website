@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: routes.home.title, template: `%s | ${SITE_NAME}` },
   description: routes.home.description,
-  applicationName: "Kinetic Agents",
+  applicationName: "Kinetic Labs",
   authors: [{ name: "Anth.Tech", url: "https://anth.tech" }],
   creator: "Anth.Tech",
   publisher: "Anth.Tech",
