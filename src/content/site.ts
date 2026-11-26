@@ -42,6 +42,12 @@ export const STRATEGY_CALL_EMBED_URL = "";
  */
 export const AGENTS_CALL_EMBED_URL = "";
 
+/**
+ * Studio Strategy Call booking page. Drop a Calendly or Cal.com embed URL here
+ * when ready; the page uses it as an iframe.
+ */
+export const STUDIO_CALL_EMBED_URL = "";
+
 /** Pages in the Kinetic app that this site links to. */
 export const studio = {
   audit: `${STUDIO_URL}/audit`,
@@ -91,6 +97,14 @@ export const footerNav: readonly {
       { href: "/connect", label: "Claude & ChatGPT" },
       { href: studio.audit, label: "Free website check" },
       { href: studio.signIn, label: "Sign in" },
+    ],
+  },
+  {
+    title: "Book a call",
+    links: [
+      { href: "/studio-call", label: "Studio Strategy Call" },
+      { href: "/strategy-call", label: "Managed Strategy Call" },
+      { href: "/agents-call", label: "Agents Strategy Call" },
     ],
   },
   {
