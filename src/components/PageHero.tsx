@@ -23,7 +23,7 @@ export default function PageHero({
           <span className="mono-label mono-label--accent">
             {section} — {kicker}
           </span>
-          <span className="mono-label">Kinetic Agents · Rev. 2026</span>
+          <span className="mono-label">Kinetic Labs · Rev. 2026</span>
         </div>
         <h1 className={cx(styles.title, "rise")}>{title}</h1>
         {subtitle && (
