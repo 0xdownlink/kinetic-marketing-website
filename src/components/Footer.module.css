@@ -128,8 +128,19 @@
   color: var(--ink-soft);
 }
 
-.credit strong {
+.companyLink {
   color: var(--ink);
+  font-weight: 600;
+  border-bottom: 1px solid color-mix(in oklab, var(--accent) 50%, transparent);
+  transition: color 0.18s var(--ease-out), border-color 0.18s var(--ease-out);
+}
+
+.companyLink:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.credit .companyLink {
   font-weight: 600;
 }
 
@@ -152,6 +163,17 @@
   letter-spacing: 0.06em;
   color: color-mix(in oklab, var(--ink) 55%, transparent);
   text-transform: uppercase;
+}
+
+.baseInner .companyLink {
+  color: inherit;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.baseInner .companyLink:hover {
+  color: var(--accent);
 }
 
 .entity {
