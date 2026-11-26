@@ -48,7 +48,7 @@ export interface NavLink {
 }
 
 export const primaryNav: readonly NavLink[] = [
-  { href: STUDIO_URL, label: "Kinetic Studio" },
+  { href: "/studio", label: "Kinetic Studio" },
   { href: "/managed", label: "Kinetic Managed" },
   { href: "/agents", label: "Kinetic Agents" },
   { href: "/how-it-works", label: "How it works" },
@@ -73,7 +73,7 @@ export const footerNav: readonly {
   {
     title: "Use it",
     links: [
-      { href: STUDIO_URL, label: "Kinetic Studio" },
+      { href: "/studio", label: "Kinetic Studio" },
       { href: "/managed", label: "Kinetic Managed" },
       { href: "/agents", label: "Kinetic Agents" },
       { href: "/connect", label: "Claude & ChatGPT" },
