@@ -45,6 +45,14 @@ export const routes = {
     kicker: "Claude & ChatGPT",
     priority: 0.8,
   },
+  studio: {
+    path: "/studio",
+    title: "Kinetic Studio: run your digital presence by prompting",
+    description:
+      "The Kinetic Labs dashboard. Connect your accounts, prompt for site changes, ads, and content, and approve everything before it goes live.",
+    kicker: "Kinetic Studio",
+    priority: 0.8,
+  },
   managed: {
     path: "/managed",
     title: "Kinetic Managed: we run it for you",
