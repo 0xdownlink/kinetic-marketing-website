@@ -19,7 +19,7 @@ export default function Footer() {
           <Link
             href="/"
             className={styles.mark}
-            aria-label="Kinetic Agents home"
+            aria-label="Kinetic Labs home"
           >
             <Mark size={44} />
           </Link>
@@ -30,7 +30,7 @@ export default function Footer() {
           <div className={styles.credit}>
             <span className={styles.creditDot} aria-hidden="true" />
             <p>
-              Kinetic Agents is created by <strong>{COMPANY}</strong>, an
+              Kinetic Labs is created by <strong>{COMPANY}</strong>, an
               AI-first company building AI agents, online presence and online
               marketing.
             </p>
@@ -64,7 +64,7 @@ export default function Footer() {
           <p>
             © {year} {LEGAL_ENTITY}
           </p>
-          <p className={styles.entity}>Kinetic Agents · Created by {COMPANY}</p>
+          <p className={styles.entity}>Kinetic Labs · Created by {COMPANY}</p>
           <p className={styles.made}>
             <span className={styles.indicator} aria-hidden="true" /> You approve
             every change
