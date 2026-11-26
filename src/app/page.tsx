@@ -150,7 +150,7 @@ export default function HomePage() {
               <h3>Your hours are wrong somewhere.</h3>
               <p>
                 The site says one thing, Google says another, and last
-                year's holiday post is still pinned.
+                year&apos;s holiday post is still pinned.
               </p>
             </li>
             <li className={styles.problemItem}>
@@ -167,7 +167,7 @@ export default function HomePage() {
               <p>
                 Ask a builder for a site and you get a made-up &ldquo;serving
                 the area since 2005&rdquo; and five-star quotes from people who
-                don't exist.
+                don&apos;t exist.
               </p>
             </li>
           </ol>
@@ -201,7 +201,7 @@ export default function HomePage() {
                 </li>
                 <li>
                   <span className="mono-label mono-label--accent">Approve</span>
-                  Untick anything you don't want, then approve in one tap.
+                  Untick anything you don&apos;t want, then approve in one tap.
                 </li>
                 <li>
                   <span className="mono-label mono-label--accent">Undo</span>
@@ -287,7 +287,7 @@ export default function HomePage() {
               </p>
               <div className={styles.tileTag}>
                 <span className="hairline" />
-                <span className="mono-label">See what's coming</span>
+                <span className="mono-label">See what&apos;s coming</span>
               </div>
             </Link>
           </div>
@@ -353,8 +353,8 @@ export default function HomePage() {
           <div className={styles.accuracyBody}>
             <p>
               Your facts come from one record you approve. AI writes the words
-              around them and isn't allowed to add anything new. If
-              something isn't confirmed, Kinetic asks you instead of
+              around them and isn&apos;t allowed to add anything new. If
+              something isn&apos;t confirmed, Kinetic asks you instead of
               guessing.
             </p>
             <dl className={styles.accuracySpec}>
@@ -411,7 +411,7 @@ export default function HomePage() {
               </span>
               <h3>Kinetic Managed</h3>
               <p>
-                {COMPANY}'s team runs Kinetic for your business, checks in
+                {COMPANY}&apos;s team runs Kinetic for your business, checks in
                 with you, and is accountable for the result. You only approve
                 what goes out.
               </p>
@@ -437,7 +437,7 @@ export default function HomePage() {
           </header>
           <p className={styles.comingLede}>
             We only call something live when it is. These are built and waiting
-            on a last step, like Google's approval.
+            on a last step, like Google&apos;s approval.
           </p>
           <ul className={styles.comingList}>
             {[...coming, ...roadmap].map((f) => (
@@ -448,7 +448,7 @@ export default function HomePage() {
             ))}
           </ul>
           <Link href="/features#coming-soon" className={styles.textLink}>
-            Everything that's live and coming <Arrow />
+            Everything that&apos;s live and coming <Arrow />
           </Link>
         </div>
       </section>
@@ -462,7 +462,7 @@ export default function HomePage() {
               <span>Honest fit</span>
             </div>
             <h2 id="fit-heading" className={styles.sectionH2}>
-              Who it's for. <em>Who it isn't.</em>
+              Who it&apos;s for. <em>Who it isn&apos;t.</em>
             </h2>
           </header>
           <div className={styles.fitGrid}>
@@ -480,70 +480,51 @@ export default function HomePage() {
             <div className={cx(styles.fitCol, styles.fitColNo)}>
               <p className="mono-label">Not for you if you</p>
               <ul>
-                <li>Want a full custom build with unique design</li>
-                <li>Need something live in the next 48 hours</li>
-                <li>Are looking for a pure AI website generator</li>
+                <li>Are building an app or a software product</li>
+                <li>Want to design pages by hand</li>
+                <li>Run a large online store</li>
               </ul>
+              <p className={styles.fitNote}>
+                An app builder or site builder will suit you better, and
+                we&apos;ll say so.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
+      {/* =========== CREATED BY =========== */}
+      <section className={styles.maker} aria-labelledby="maker-heading">
+        <div className={cx("container", styles.makerInner)}>
+          <span className="mono-label mono-label--accent">
+            § 09 — Who&apos;s behind it
+          </span>
+          <h2 id="maker-heading" className={styles.makerH2}>
+            Kinetic Agents is created by <em>{COMPANY}.</em>
+          </h2>
+          <p>
+            {COMPANY} is an AI-first company that builds AI agents, online
+            presence and online marketing for businesses. We build Kinetic,
+            support it, and run it for Managed clients. A person is accountable,
+            not just a chatbot.
+          </p>
+        </div>
+      </section>
+
       <ClosingCTA
-        kicker="Start here"
         title={
           <>
-            See what's off. <em>Then keep it right.</em>
+            See what&apos;s wrong online today. <em>Free.</em>
           </>
         }
-        body="Paste your site. We'll show you what doesn't match. Free, and no account required."
-        ctaLabel="Get your free website check"
-        ctaHref={studio.audit}
-        secondaryLabel="Talk to us"
-        secondaryHref={mailto("Website check")}
-        microcopy={`Created by ${COMPANY}. Nothing invented.`}
+        body="Paste your website and Kinetic checks your phone, hours, address, broken links and whether Google can list your pages. Read-only, and no account needed."
+        secondaryHref={mailto("Kinetic for my business")}
       />
     </>
   );
 }
 
-function HeroMark() {
-  return (
-    <svg
-      className={styles.heroMark}
-      viewBox="0 0 48 48"
-      fill="none"
-      aria-hidden="true"
-    >
-      <circle cx="24" cy="24" r="22" stroke="currentColor" strokeWidth="1" />
-      <path
-        d="M24 8v32M8 24h32"
-        stroke="currentColor"
-        strokeWidth="1"
-        opacity="0.5"
-      />
-      <circle cx="24" cy="24" r="4" fill="currentColor" />
-    </svg>
-  );
-}
-
-function ChangeCard() {
-  return (
-    <div className={styles.changeCard} aria-hidden="true">
-      <div className={styles.changeCardHead}>
-        <span className="mono-label">Proposed change</span>
-        <span className={styles.changeCardStatus}>Waiting on you</span>
-      </div>
-      <p className={styles.changeCardBody}>
-        Update hours: closed Thanksgiving Day. Open Friday 8am–6pm.
-      </p>
-      <div className={styles.changeCardActions}>
-        <span className={styles.changeApprove}>Approve</span>
-        <span className={styles.changeEdit}>Edit</span>
-      </div>
-    </div>
-  );
-}
+/* ------------------------------------------------------------------ */
 
 function Step({
   step,
@@ -558,10 +539,130 @@ function Step({
 }) {
   return (
     <li className={styles.step}>
-      <span className={styles.stepNum}>{step}</span>
+      <div className={styles.stepHead}>
+        <span className={styles.stepNum}>{step}</span>
+        <span className={styles.stepRule} aria-hidden="true" />
+      </div>
       <h3 className={styles.stepTitle}>{title}</h3>
       <p className={styles.stepBody}>{body}</p>
-      <span className={styles.stepDeliver}>{deliverable}</span>
+      <p className={styles.stepDeliverable}>
+        <span className="mono-label">You get</span>
+        <span>{deliverable}</span>
+      </p>
     </li>
+  );
+}
+
+/**
+ * An illustration of a change card, the way Kinetic shows one in an AI app.
+ * It's a picture of the flow, not a live control, so it's hidden from the
+ * accessibility tree and described in text beside it.
+ */
+function ChangeCard() {
+  return (
+    <figure className={styles.card}>
+      <div className={styles.cardChat} aria-hidden="true">
+        <span className={styles.cardWho}>You</span>
+        <p>We&apos;re closed Thanksgiving, and open Black Friday at 7.</p>
+      </div>
+      <div className={styles.cardBody} aria-hidden="true">
+        <div className={styles.cardHead}>
+          <span className={styles.cardBrand}>
+            <span className={styles.cardDot} /> Kinetic · Proposed change
+          </span>
+          <span className="mono-label">Not live yet</span>
+        </div>
+        <ul className={styles.cardLines}>
+          <CardLine
+            checked
+            label="Business record"
+            detail="Holiday hours for Nov 26 and Nov 27"
+          />
+          <CardLine
+            checked
+            label="Website"
+            detail="Hours updated, holiday banner added"
+          />
+          <CardLine
+            label="Social post"
+            detail="Suggested: a post about the holiday hours"
+          />
+          <CardLine soon label="Google listing" detail="Special hours" />
+        </ul>
+        <div className={styles.cardActions}>
+          <span className={styles.cardApprove}>Approve</span>
+          <span className={styles.cardUndo}>Undo any time</span>
+        </div>
+      </div>
+      <figcaption className="sr">
+        Example: you tell Kinetic you&apos;re closed on Thanksgiving. Kinetic
+        proposes one change with a line for your business record, your website
+        and an optional social post, and nothing goes live until you approve.
+        The Google listing line is coming soon.
+      </figcaption>
+    </figure>
+  );
+}
+
+function CardLine({
+  label,
+  detail,
+  checked,
+  soon,
+}: {
+  label: string;
+  detail: string;
+  checked?: boolean;
+  soon?: boolean;
+}) {
+  return (
+    <li className={cx(styles.cardLine, soon ? styles.cardLineSoon : "")}>
+      <span className={cx(styles.cardCheck, checked ? styles.cardChecked : "")}>
+        {checked ? "✓" : ""}
+      </span>
+      <span className={styles.cardLabel}>{label}</span>
+      <span className={styles.cardDetail}>{soon ? "Coming soon" : detail}</span>
+    </li>
+  );
+}
+
+function HeroMark() {
+  return (
+    <svg
+      className={styles.heroMark}
+      width="120"
+      height="120"
+      viewBox="0 0 120 120"
+      fill="none"
+      aria-hidden="true"
+    >
+      <circle
+        cx="60"
+        cy="60"
+        r="56"
+        stroke="currentColor"
+        strokeWidth="0.75"
+        strokeDasharray="2 4"
+      />
+      <circle cx="60" cy="60" r="40" stroke="currentColor" strokeWidth="0.75" />
+      <path
+        d="M20 60 L60 20 L100 60 L60 100 Z"
+        stroke="currentColor"
+        strokeWidth="1"
+        fill="none"
+      />
+      <circle cx="60" cy="60" r="6" fill="currentColor" />
+      <text
+        x="60"
+        y="118"
+        textAnchor="middle"
+        fontFamily="var(--font-plex-mono)"
+        fontSize="6"
+        letterSpacing="2"
+        fill="currentColor"
+      >
+        KIN-A · 001
+      </text>
+    </svg>
   );
 }
