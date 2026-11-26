@@ -42,11 +42,50 @@ export default function StrategyCallPage() {
         </a>
       </PageHero>
 
-      <section className={s.section} aria-labelledby="expect-heading">
+      <section className={s.section} id="book" aria-labelledby="book-heading">
         <div className="container">
           <header className={s.head}>
             <div className="section-tag">
               <span>§ 01</span>
+              <span>Book</span>
+            </div>
+            <h2 id="book-heading" className={s.h2}>
+              Pick a time.
+            </h2>
+          </header>
+          {STRATEGY_CALL_EMBED_URL ? (
+            <iframe
+              title="Book a Free Strategy Call"
+              src={STRATEGY_CALL_EMBED_URL}
+              style={{
+                width: "100%",
+                minHeight: "680px",
+                border: "1px solid var(--rule)",
+                background: "var(--paper)",
+              }}
+            />
+          ) : (
+            <div className={s.aside}>
+              <h2>Calendar coming soon.</h2>
+              <div className={s.asideBody}>
+                <p>
+                  The booking calendar will live here. For now, email us and
+                  we'll find a time that works.
+                </p>
+                <a href={mailto("Free Strategy Call")} className="btn btn--primary">
+                  Email to book <Arrow />
+                </a>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section className={s.sectionAlt} aria-labelledby="expect-heading">
+        <div className="container">
+          <header className={s.head}>
+            <div className="section-tag">
+              <span>§ 02</span>
               <span>What to expect</span>
             </div>
             <h2 id="expect-heading" className={s.h2}>
@@ -79,45 +118,6 @@ export default function StrategyCallPage() {
               </p>
             </article>
           </div>
-        </div>
-      </section>
-
-      <section className={s.sectionAlt} id="book" aria-labelledby="book-heading">
-        <div className="container">
-          <header className={s.head}>
-            <div className="section-tag">
-              <span>§ 02</span>
-              <span>Book</span>
-            </div>
-            <h2 id="book-heading" className={s.h2}>
-              Pick a time.
-            </h2>
-          </header>
-          {STRATEGY_CALL_EMBED_URL ? (
-            <iframe
-              title="Book a Free Strategy Call"
-              src={STRATEGY_CALL_EMBED_URL}
-              style={{
-                width: "100%",
-                minHeight: "680px",
-                border: "1px solid var(--rule)",
-                background: "var(--paper)",
-              }}
-            />
-          ) : (
-            <div className={s.aside}>
-              <h2>Calendar coming soon.</h2>
-              <div className={s.asideBody}>
-                <p>
-                  The booking calendar will live here. For now, email us and
-                  we'll find a time that works.
-                </p>
-                <a href={mailto("Free Strategy Call")} className="btn btn--primary">
-                  Email to book <Arrow />
-                </a>
-              </div>
-            </div>
-          )}
         </div>
       </section>
 
