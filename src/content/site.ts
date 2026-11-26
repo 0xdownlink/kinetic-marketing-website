@@ -6,9 +6,9 @@ export const SITE_URL = "https://gokinetic.tech";
 /** The Kinetic app (sign-in, the free audit, the connector help, plan sign-up). */
 export const STUDIO_URL = "https://studio.gokinetic.tech";
 
-export const SITE_NAME = "Kinetic";
+export const SITE_NAME = "Kinetic Labs";
 
-/** The company that created Kinetic Agents, always with the dot. */
+/** The company that created Kinetic Labs, always with the dot. */
 export const COMPANY = "Anth.Tech";
 
 /** Anth.Tech's own website. */
@@ -48,10 +48,12 @@ export interface NavLink {
 }
 
 export const primaryNav: readonly NavLink[] = [
+  { href: STUDIO_URL, label: "Kinetic Studio" },
+  { href: "/managed", label: "Kinetic Managed" },
+  { href: "/agents", label: "Kinetic Agents" },
   { href: "/how-it-works", label: "How it works" },
   { href: "/features", label: "Features" },
   { href: "/connect", label: "Claude & ChatGPT" },
-  { href: "/managed", label: "Managed" },
   { href: "/pricing", label: "Pricing" },
 ];
 
@@ -71,8 +73,10 @@ export const footerNav: readonly {
   {
     title: "Use it",
     links: [
-      { href: "/connect", label: "Claude & ChatGPT" },
+      { href: STUDIO_URL, label: "Kinetic Studio" },
       { href: "/managed", label: "Kinetic Managed" },
+      { href: "/agents", label: "Kinetic Agents" },
+      { href: "/connect", label: "Claude & ChatGPT" },
       { href: studio.audit, label: "Free website check" },
       { href: studio.signIn, label: "Sign in" },
     ],
