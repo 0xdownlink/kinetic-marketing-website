@@ -29,12 +29,12 @@ const connections = [
     body: "Pull your photos, videos, and files. Use your own assets or generate new ones.",
   },
   {
-    title: "Voice agents",
-    body: "11Labs-powered voice. Answer calls, handle inquiries, and stay consistent with your approved facts.",
+    title: "Voice & reception",
+    body: "Reception AI by 11Labs. Answer calls, handle inquiries, and stay consistent with your approved facts.",
   },
   {
-    title: "Reception & more",
-    body: "Reception.ai and the rest of the stack, wired into the same approve-first system.",
+    title: "And more",
+    body: "The rest of the stack, wired into the same approve-first system as everything else in Studio.",
   },
 ] as const;
 
@@ -57,7 +57,7 @@ const capabilities = [
   },
   {
     title: "Voice that matches you",
-    body: "11Labs voice agents that sound like your business and only say what you've approved.",
+    body: "Reception AI by 11Labs that sounds like your business and only says what you've approved.",
   },
   {
     title: "Credits that power it",
@@ -192,8 +192,8 @@ export default function StudioPage() {
               <p>
                 The core is Claude and ChatGPT — the AI you already know. Studio
                 gives them your approved record so they can't invent facts.
-                Specialists handle the rest: Higgsfield for creative, 11Labs for
-                voice, Reception.ai for calls, and more as we add them.
+                Specialists handle the rest: Higgsfield for creative, Reception
+                AI by 11Labs for voice and calls, and more as we add them.
               </p>
               <p>
                 Every output is a card you approve. Nothing ships until you say
