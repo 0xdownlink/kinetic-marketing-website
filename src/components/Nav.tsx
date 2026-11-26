@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { COMPANY, primaryNav, studio } from "@/content/site";
 import { Arrow, Mark } from "./Mark";
+import { SmartLink } from "./SmartLink";
 import styles from "./Nav.module.css";
 import { cx } from "@/lib/cx";
 
@@ -40,7 +40,10 @@ export default function Nav() {
   }, [open]);
 
   const current = (href: string) =>
-    pathname === href || pathname.startsWith(`${href}/`) ? "page" : undefined;
+    href.startsWith("/") &&
+    (pathname === href || pathname.startsWith(`${href}/`))
+      ? "page"
+      : undefined;
 
   return (
     <header
@@ -48,30 +51,30 @@ export default function Nav() {
       data-open={open}
     >
       <div className={styles.inner}>
-        <Link
+        <SmartLink
           href="/"
           className={styles.brand}
-          aria-label="Kinetic Agents home"
+          aria-label="Kinetic Labs home"
         >
           <span className={styles.brandMarkIcon}>
             <Mark />
           </span>
           <span className={styles.brandText}>
             <span className={styles.brandName}>Kinetic</span>
-            <span className={styles.brandMark}>Agents</span>
+            <span className={styles.brandMark}>Labs</span>
           </span>
-        </Link>
+        </SmartLink>
 
         <nav className={styles.links} aria-label="Primary">
           {primaryNav.map((l) => (
-            <Link
+            <SmartLink
               key={l.href}
               href={l.href}
               className={styles.link}
               aria-current={current(l.href)}
             >
               {l.label}
-            </Link>
+            </SmartLink>
           ))}
         </nav>
 
@@ -102,14 +105,14 @@ export default function Nav() {
       <div id="site-menu" className={styles.drawer} inert={!open}>
         <nav aria-label="Menu">
           {primaryNav.map((l) => (
-            <Link
+            <SmartLink
               key={l.href}
               href={l.href}
               className={styles.drawerLink}
               aria-current={current(l.href)}
             >
               {l.label}
-            </Link>
+            </SmartLink>
           ))}
         </nav>
         <a
@@ -120,7 +123,7 @@ export default function Nav() {
           <Arrow />
         </a>
         <p className={styles.drawerNote}>
-          Kinetic Agents is created by {COMPANY}.
+          Kinetic Labs is created by {COMPANY}.
         </p>
       </div>
     </header>
