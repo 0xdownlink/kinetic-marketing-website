@@ -308,7 +308,7 @@ export default function StudioPage() {
         ctaHref={STUDIO_URL}
         secondaryLabel="Free website check"
         secondaryHref={studio.audit}
-        microcopy="Built by {COMPANY}. Same accuracy promise as everything else in Kinetic Labs."
+        microcopy={`Built by ${COMPANY}. Same accuracy promise as everything else in Kinetic Labs.`}
       />
       <JsonLd data={pageJsonLd("studio")} />
     </>
