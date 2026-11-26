@@ -36,6 +36,12 @@ export const GOOGLE_TAG_ID = "GTM-M3TH3Q9C";
  */
 export const STRATEGY_CALL_EMBED_URL = "";
 
+/**
+ * Free Agents Call booking page. Drop a Calendly or Cal.com embed URL here
+ * when ready; the page uses it as an iframe.
+ */
+export const AGENTS_CALL_EMBED_URL = "";
+
 /** Pages in the Kinetic app that this site links to. */
 export const studio = {
   audit: `${STUDIO_URL}/audit`,
