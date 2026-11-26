@@ -86,6 +86,14 @@ export default function Nav() {
             Free website check
             <Arrow />
           </a>
+          <a
+            href={studio.signIn}
+            className={cx("btn", "btn--ghost", styles.cta)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Sign into Studio
+          </a>
           <button
             type="button"
             className={styles.burger}
@@ -121,6 +129,14 @@ export default function Nav() {
         >
           Free website check
           <Arrow />
+        </a>
+        <a
+          href={studio.signIn}
+          className={cx("btn", "btn--ghost", styles.drawerCta)}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Sign into Studio
         </a>
         <p className={styles.drawerNote}>
           Kinetic Labs is created by {COMPANY}.
