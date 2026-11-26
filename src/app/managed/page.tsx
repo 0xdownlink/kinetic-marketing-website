@@ -3,13 +3,15 @@ import ClosingCTA from "@/components/ClosingCTA";
 import s from "@/components/Inner.module.css";
 import PageHero from "@/components/PageHero";
 import { Arrow } from "@/components/Mark";
-import { COMPANY, mailto, studio } from "@/content/site";
+import { COMPANY, studio } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 import { cx } from "@/lib/cx";
 import { JsonLd } from "@/components/JsonLd";
 import { pageJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = pageMetadata("managed");
+
+const STRATEGY_CALL = "/strategy-call";
 
 // [VERIFY] Anthony: confirm this list against what Managed clients get
 // (docs/managed-runbook.md) and the approval channels you'll offer.
@@ -45,15 +47,15 @@ export default function ManagedPage() {
         }
         subtitle={
           <p>
-            Kinetic Managed is Kinetic run by {COMPANY}'s team. We set up
-            your record and site, keep your site and posts current, and check in
+            Kinetic Managed is Kinetic run by {COMPANY}'s team. We set up your
+            record and site, keep your site and posts current, and check in
             with you on anything that needs your answer. You approve what goes
             out, without learning any tool.
           </p>
         }
       >
-        <a href={mailto("Kinetic Managed")} className="btn btn--primary">
-          Talk to us <Arrow />
+        <a href={STRATEGY_CALL} className="btn btn--primary">
+          Free Strategy Call <Arrow />
         </a>
       </PageHero>
 
@@ -103,15 +105,15 @@ export default function ManagedPage() {
       </section>
 
       <ClosingCTA
-        kicker="Talk to us"
+        kicker="Free Strategy Call"
         title={
           <>
             Tell us about <em>your business.</em>
           </>
         }
-        body="Pricing for Managed is coming soon. Email us and we'll talk through what you need."
-        ctaLabel="Email us"
-        ctaHref={mailto("Kinetic Managed")}
+        body="Book a free strategy call. We'll walk through what you need and whether Managed is the right fit."
+        ctaLabel="Free Strategy Call"
+        ctaHref={STRATEGY_CALL}
         secondaryLabel="Free website check first"
         secondaryHref={studio.audit}
         microcopy="For now we set up each business by hand, one at a time."
