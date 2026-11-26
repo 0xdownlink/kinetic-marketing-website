@@ -77,6 +77,14 @@ export const routes = {
     kicker: "Free Strategy Call",
     priority: 0.7,
   },
+  agentsCall: {
+    path: "/agents-call",
+    title: "Free Agents Call",
+    description:
+      "Book a free call with Anth.Tech about Kinetic Agents. We'll walk through what day-to-day work an agent can propose for your business.",
+    kicker: "Free Agents Call",
+    priority: 0.7,
+  },
   accuracy: {
     path: "/accuracy",
     title: "Our accuracy promise: we never make things up",
