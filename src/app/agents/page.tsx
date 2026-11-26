@@ -3,13 +3,15 @@ import ClosingCTA from "@/components/ClosingCTA";
 import s from "@/components/Inner.module.css";
 import PageHero from "@/components/PageHero";
 import { Arrow } from "@/components/Mark";
-import { COMPANY, mailto, studio } from "@/content/site";
+import { COMPANY, studio } from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 import { cx } from "@/lib/cx";
 import { JsonLd } from "@/components/JsonLd";
 import { pageJsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = pageMetadata("agents");
+
+const AGENTS_CALL = "/agents-call";
 
 export default function AgentsPage() {
   return (
@@ -30,8 +32,8 @@ export default function AgentsPage() {
           </p>
         }
       >
-        <a href={mailto("Kinetic Agents")} className="btn btn--primary">
-          Talk to us about Agents <Arrow />
+        <a href={AGENTS_CALL} className="btn btn--primary">
+          Free Agents Call <Arrow />
         </a>
       </PageHero>
 
@@ -84,15 +86,15 @@ export default function AgentsPage() {
       </section>
 
       <ClosingCTA
-        kicker="Next step"
+        kicker="Free Agents Call"
         title={
           <>
             See if Agents fit <em>your business.</em>
           </>
         }
-        body="Tell us what you want handled and we'll show you what an agent can propose."
-        ctaLabel="Email us"
-        ctaHref={mailto("Kinetic Agents")}
+        body="Book a free Agents call. We'll walk through what you want handled and what an agent can propose."
+        ctaLabel="Free Agents Call"
+        ctaHref={AGENTS_CALL}
         secondaryLabel="Start with the free check"
         secondaryHref={studio.audit}
         microcopy="Agents follow the same propose-and-approve rules as everything else in Kinetic."
