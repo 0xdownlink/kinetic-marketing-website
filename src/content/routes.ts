@@ -69,12 +69,20 @@ export const routes = {
     kicker: "Kinetic Agents",
     priority: 0.8,
   },
+  studioCall: {
+    path: "/studio-call",
+    title: "Studio Strategy Call",
+    description:
+      "Book a free strategy call with Anth.Tech about Kinetic Studio. We'll walk through the dashboard and how you run your presence by prompting.",
+    kicker: "Studio Strategy Call",
+    priority: 0.7,
+  },
   strategyCall: {
     path: "/strategy-call",
     title: "Free Strategy Call",
     description:
       "Book a free strategy call with Anth.Tech about Kinetic Managed. We'll walk through your business and what we can run for you.",
-    kicker: "Free Strategy Call",
+    kicker: "Managed Strategy Call",
     priority: 0.7,
   },
   agentsCall: {
@@ -82,7 +90,7 @@ export const routes = {
     title: "Free Agents Call",
     description:
       "Book a free call with Anth.Tech about Kinetic Agents. We'll walk through what day-to-day work an agent can propose for your business.",
-    kicker: "Free Agents Call",
+    kicker: "Agents Strategy Call",
     priority: 0.7,
   },
   accuracy: {
