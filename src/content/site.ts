@@ -30,6 +30,12 @@ export const CONTACT_EMAIL = "hello@gokinetic.tech";
  */
 export const GOOGLE_TAG_ID = "GTM-M3TH3Q9C";
 
+/**
+ * Free Strategy Call booking page. Drop a Calendly or Cal.com embed URL here
+ * when ready; the page uses it as an iframe.
+ */
+export const STRATEGY_CALL_EMBED_URL = "";
+
 /** Pages in the Kinetic app that this site links to. */
 export const studio = {
   audit: `${STUDIO_URL}/audit`,
