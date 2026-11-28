@@ -1,7 +1,9 @@
+/* HERO — previous editorial layout, no dashboard */
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 3rem 0 4.5rem;
+  padding: 3.5rem 0 5rem;
+  isolation: isolate;
 }
 
 .heroGrid {
@@ -12,217 +14,186 @@
     linear-gradient(to right, var(--rule-soft) 1px, transparent 1px),
     linear-gradient(to bottom, var(--rule-soft) 1px, transparent 1px);
   background-size: 80px 80px;
-  mask-image: radial-gradient(ellipse 70% 70% at 40% 30%, black 20%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 40% 30%, black 20%, transparent 100%);
-  opacity: 0.55;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 30%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 30%, black 30%, transparent 100%);
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.heroGlow {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 70vw;
+  height: 70vw;
+  max-width: 980px;
+  max-height: 980px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 40% 40%, color-mix(in oklab, var(--accent-deep) 30%, transparent) 0%, transparent 55%),
+    radial-gradient(circle at 70% 70%, color-mix(in oklab, var(--teal) 10%, transparent) 0%, transparent 50%);
+  filter: blur(10px);
+  z-index: -1;
+}
+
+.regMarks {
+  position: absolute;
+  top: 2.5rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 var(--gutter);
+  color: var(--ink-mute);
+  opacity: 0.35;
+  z-index: 0;
 }
 
 .heroInner {
   position: relative;
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 3rem;
-  align-items: center;
-}
-
-.heroCopy {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  gap: 2.25rem;
+  padding-top: 2rem;
 }
 
 .heroMeta {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--rule);
-}
-
-.makerLink {
-  font-family: var(--font-plex-mono), monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-}
-
-.makerLink:hover {
-  color: var(--accent);
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--rule);
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .heroH1 {
-  font-size: clamp(2.6rem, 5.4vw, 5.25rem);
-  line-height: 0.94;
-  letter-spacing: -0.03em;
+  font-size: clamp(3rem, 10vw, var(--fs-5xl));
+  line-height: 0.92;
+  letter-spacing: -0.025em;
   font-weight: 400;
-  max-width: 12ch;
+  display: flex;
+  flex-direction: column;
+  color: var(--ink);
 }
 
 .heroH1 em {
   font-style: italic;
   color: var(--accent);
-  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+
+.heroLine1 { padding-left: 0; }
+.heroLine2 { padding-left: 8vw; color: var(--ink-soft); }
+.heroLine3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-left: 2vw;
+}
+
+.heroMark {
+  color: var(--accent);
+  opacity: 0.9;
+  flex-shrink: 0;
+  margin-left: auto;
+  margin-right: 2rem;
+  width: clamp(80px, 10vw, 140px);
+  animation: slowSpin 60s linear infinite;
+  transform-origin: center;
 }
 
 .heroSub {
-  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
-  line-height: 1.45;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  align-items: start;
+}
+
+.heroSub p {
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  line-height: 1.4;
   color: var(--ink-soft);
-  max-width: 46ch;
+  max-width: 48ch;
+}
+
+.heroSubRail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: flex-end;
+  text-align: right;
+  padding-top: 0.4rem;
 }
 
 .heroActions {
   display: flex;
-  flex-wrap: wrap;
   gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.proof {
-  border: 1px solid color-mix(in oklab, var(--accent) 45%, var(--rule));
-  background: var(--paper-deep);
-  box-shadow:
-    0 0 0 1px color-mix(in oklab, var(--accent) 25%, transparent),
-    0 30px 80px -40px var(--accent-glow);
-  min-height: 420px;
-  display: flex;
-  flex-direction: column;
+.trustStrip {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+  align-items: center;
 }
 
-.proofBar {
+.badge {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.7rem 0.9rem;
-  border-bottom: 1px solid var(--rule);
+  gap: 0.9rem;
+  padding: 0.85rem 1.15rem;
+  border: 1px solid color-mix(in oklab, var(--accent) 45%, transparent);
+  background: var(--accent-wash);
 }
 
-.proofBar span {
-  width: 8px;
-  height: 8px;
+.badgeDot {
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: var(--rule);
-}
-
-.proofBar span:first-child {
   background: var(--accent);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 20%, transparent);
 }
 
-.proofBar em {
-  margin-left: 0.6rem;
-  font-style: normal;
+.badgeTitle {
+  font-family: var(--font-fraunces), serif;
+  font-size: 1.05rem;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.badgeSub {
   font-family: var(--font-plex-mono), monospace;
   font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
-}
-
-.proofBody {
-  display: grid;
-  grid-template-columns: 8.5rem 1fr;
-  min-height: 360px;
-  flex: 1;
-}
-
-.proofSide {
-  border-right: 1px solid var(--rule);
-  padding: 1rem 0.8rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.proofSide > span,
-.proofSide li {
-  font-family: var(--font-plex-mono), monospace;
-  font-size: 0.72rem;
   letter-spacing: 0.06em;
-  color: var(--ink-soft);
-}
-
-.proofSide > span {
-  color: var(--accent);
-  text-transform: uppercase;
-}
-
-.proofSide ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-}
-
-.proofMain {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-  padding: 1rem;
-}
-
-.promptBox,
-.preview {
-  border: 1px solid var(--rule);
-  background: var(--raised);
-  padding: 0.9rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.promptBox p,
-.previewSite {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  min-height: 1.6rem;
-}
-
-.typed {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  max-width: 100%;
-  border-right: 0;
-  animation: type 3.6s steps(52, end) 0.4s both;
-}
-
-.caret {
-  width: 8px;
-  height: 1rem;
-  background: var(--accent);
-  animation: blink 1s steps(1) infinite;
-}
-
-.previewSite {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.25rem;
-  padding: 0.75rem;
-  border: 1px dashed color-mix(in oklab, var(--accent) 50%, var(--rule));
-  background: var(--paper);
-}
-
-.previewSite strong {
-  font-family: var(--font-fraunces), serif;
-  font-size: 1.15rem;
-}
-
-.previewSite span {
-  font-family: var(--font-plex-mono), monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--ink-mute);
+  margin: 0;
+  text-transform: uppercase;
 }
 
-.previewSite em {
-  font-style: italic;
-  color: var(--accent);
+.specLane {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: start;
+  gap: 1rem 3rem;
+}
+
+.specLane > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.specLane dd {
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  color: var(--ink);
 }
 
 .sectionHead {
@@ -666,6 +637,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .heroMark { animation: none; }
   .typed {
     animation: none;
     width: auto;
@@ -676,6 +648,14 @@
 }
 
 @media (max-width: 960px) {
+  .heroLine2 { padding-left: 4vw; }
+  .heroLine3 { padding-left: 0; flex-wrap: wrap; }
+  .heroMark { margin-left: 0; margin-right: 0; }
+  .heroSub { grid-template-columns: 1fr; }
+  .heroSubRail { align-items: flex-start; text-align: left; }
+  .trustStrip { grid-template-columns: 1fr; gap: 1.5rem; }
+  .specLane { grid-template-columns: 1fr 1fr; gap: 1rem 2rem; }
+
   .heroInner,
   .loopGrid,
   .promiseInner,
@@ -709,6 +689,7 @@
 }
 
 @media (max-width: 560px) {
+  .heroMark { display: none; }
   .cardLine {
     grid-template-columns: 1.2rem 1fr;
   }
@@ -720,4 +701,8 @@
     animation: none;
     width: auto;
   }
+}
+
+@keyframes slowSpin {
+  to { transform: rotate(360deg); }
 }
