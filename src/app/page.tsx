@@ -21,7 +21,7 @@ export const metadata: Metadata = pageMetadata("home");
 
 const AREA_BLURB: Record<FeatureArea, string> = {
   sites:
-    "Drafted from your approved facts, fact-checked before every publish, changed in a sentence.",
+    "Rebuild, change, and modify your site from a prompt. See it before it goes live, from the same approved change.",
   social:
     "A month of posts planned, written and designed, approved on one page, then scheduled.",
   google:
