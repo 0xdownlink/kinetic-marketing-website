@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Arrow } from "@/components/Mark";
+import { Arrow, Crosshair } from "@/components/Mark";
 import { SmartLink } from "@/components/SmartLink";
 import {
   COMPANY,
@@ -54,46 +54,86 @@ export default function HomePage() {
     <>
       <section className={styles.hero} aria-labelledby="hero-heading">
         <div className={styles.heroGrid} aria-hidden="true" />
+        <div className={styles.heroGlow} aria-hidden="true" />
+        <div className={styles.regMarks} aria-hidden="true">
+          <Crosshair />
+          <Crosshair />
+        </div>
+
         <div className={cx("container", styles.heroInner)}>
-          <div className={styles.heroCopy}>
-            <div className={styles.heroMeta}>
-              <span className="mono-label mono-label--accent">
-                § 00 — Kinetic Labs
-              </span>
-              <a
-                href={COMPANY_URL}
-                className={styles.makerLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Created by {COMPANY}
-              </a>
-            </div>
+          <div className={styles.heroMeta}>
+            <span className="mono-label mono-label--accent">
+              § 00 — Kinetic Labs
+            </span>
+            <a
+              href={COMPANY_URL}
+              className={styles.makerLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Created by {COMPANY}
+            </a>
+          </div>
 
-            <h1 id="hero-heading" className={styles.heroH1}>
-              We connected everything.
-              <em> You just prompt it.</em>
-            </h1>
+          <h1 id="hero-heading" className={styles.heroH1}>
+            <span className={styles.heroLine1}>We connected</span>
+            <span className={styles.heroLine2}>everything.</span>
+            <span className={styles.heroLine3}>
+              <em>You just prompt it.</em>
+              <HeroMark />
+            </span>
+          </h1>
 
-            <p className={styles.heroSub}>
+          <div className={styles.heroSub}>
+            <p>
               Connect your domain, socials, email and phones once. Then say
               what you want: change the website, schedule a month of posts,
               draft the campaign, put a voice agent on your phones. See it
               before it goes live. Nothing ships until you say so.
             </p>
-
-            <div className={styles.heroActions}>
-              <a href={STUDIO_URL} className="btn btn--primary">
-                Open Kinetic Studio
-                <Arrow />
-              </a>
-              <a href="#loop" className="btn btn--ghost">
-                See it in action
-              </a>
+            <div className={styles.heroSubRail}>
+              <span className="mono-label">See it before it goes live.</span>
+              <span className="mono-label mono-label--ink">
+                Nothing ships until you say so.
+              </span>
             </div>
           </div>
 
-          <StudioProof />
+          <div className={styles.heroActions}>
+            <a href={STUDIO_URL} className="btn btn--primary">
+              Open Kinetic Studio
+              <Arrow />
+            </a>
+            <a href="#loop" className="btn btn--ghost">
+              See it in action
+            </a>
+          </div>
+
+          <div className={styles.trustStrip}>
+            <div className={styles.badge}>
+              <span className={styles.badgeDot} aria-hidden="true" />
+              <div>
+                <p className={styles.badgeTitle}>Our accuracy promise</p>
+                <p className={styles.badgeSub}>
+                  Your facts, only the ones you approved
+                </p>
+              </div>
+            </div>
+            <dl className={styles.specLane}>
+              <div>
+                <dt className="mono-label">Works in</dt>
+                <dd>Claude · ChatGPT</dd>
+              </div>
+              <div>
+                <dt className="mono-label">Keeps right</dt>
+                <dd>Website · Social · Voice</dd>
+              </div>
+              <div>
+                <dt className="mono-label">Created by</dt>
+                <dd>{COMPANY}</dd>
+              </div>
+            </dl>
+          </div>
         </div>
       </section>
 
@@ -342,53 +382,21 @@ export default function HomePage() {
   );
 }
 
-function StudioProof() {
+function HeroMark() {
   return (
-    <figure className={styles.proof} aria-label="Kinetic Studio: a prompt being typed, and a preview of the website change before it goes live.">
-      <div className={styles.proofBar} aria-hidden="true">
-        <span />
-        <span />
-        <span />
-        <em>Kinetic Studio</em>
-      </div>
-      <div className={styles.proofBody}>
-        <aside className={styles.proofSide} aria-hidden="true">
-          <span>Connected</span>
-          <ul>
-            <li>Domain</li>
-            <li>Google</li>
-            <li>Email</li>
-            <li>Website</li>
-            <li>Social</li>
-            <li>Drive</li>
-            <li>Voice</li>
-          </ul>
-        </aside>
-        <div className={styles.proofMain}>
-          <div className={styles.promptBox} aria-hidden="true">
-            <span className="mono-label">Prompt</span>
-            <p>
-              <span className={styles.typed}>
-                Change hours to closed Thanksgiving, open Friday at 7.
-              </span>
-              <span className={styles.caret} />
-            </p>
-          </div>
-          <div className={styles.preview} aria-hidden="true">
-            <span className="mono-label">Preview · not live</span>
-            <div className={styles.previewSite}>
-              <strong>Northside Plumbing</strong>
-              <span>Hours</span>
-              <em>Closed Thanksgiving · Open Friday 7am</em>
-            </div>
-          </div>
-        </div>
-      </div>
-      <figcaption className="sr">
-        A Kinetic Studio view: you type a prompt to change hours, and the
-        website preview updates before anything goes live.
-      </figcaption>
-    </figure>
+    <svg
+      className={styles.heroMark}
+      width="120"
+      height="120"
+      viewBox="0 0 120 120"
+      fill="none"
+      aria-hidden="true"
+    >
+      <circle cx="60" cy="60" r="56" stroke="currentColor" strokeWidth="0.75" strokeDasharray="2 4" />
+      <circle cx="60" cy="60" r="40" stroke="currentColor" strokeWidth="0.75" />
+      <path d="M20 60 L60 20 L100 60 L60 100 Z" stroke="currentColor" strokeWidth="1" fill="none" />
+      <circle cx="60" cy="60" r="6" fill="currentColor" />
+    </svg>
   );
 }
 
