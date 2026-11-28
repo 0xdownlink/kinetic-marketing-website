@@ -15,9 +15,9 @@ export interface RouteInfo {
 export const routes = {
   home: {
     path: "/",
-    title: "Kinetic: keep your local business right online",
+    title: "Kinetic Labs: connect everything, then prompt it",
     description:
-      "Your website and social posts, kept right every week from the AI app you already use. You approve every change. Nothing is invented. Created by Anth.Tech.",
+      "Connect your domain, socials, email and phones once. Then prompt the website, posts, campaigns and voice agent. See it before it goes live.",
     kicker: "Kinetic Labs",
     priority: 1,
   },
