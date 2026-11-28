@@ -273,11 +273,66 @@ export default function HomePage() {
               </Link>
             ))}
             <Link
-              href="/features#coming-soon"
+              href="/studio"
               className={cx(styles.tile, styles.tileGhost)}
             >
               <div className={styles.tileTop}>
                 <span className={styles.tileIndex}>06</span>
+                <StatusPill status="soon" />
+              </div>
+              <h3 className={styles.tileTitle}>Voice</h3>
+              <p className={styles.tileBody}>
+                Voice agents powered by Reception.AI by ElevenLabs. They answer
+                and handle calls the way a person would, from the same approved
+                record.
+              </p>
+              <div className={styles.tileTag}>
+                <span className="hairline" />
+                <span className="mono-label">In Kinetic Studio</span>
+              </div>
+            </Link>
+            <Link
+              href="/studio"
+              className={cx(styles.tile, styles.tileGhost)}
+            >
+              <div className={styles.tileTop}>
+                <span className={styles.tileIndex}>07</span>
+                <StatusPill status="soon" />
+              </div>
+              <h3 className={styles.tileTitle}>Email</h3>
+              <p className={styles.tileBody}>
+                Draft and send email from Kinetic Studio. Same record, same
+                approve-first rule.
+              </p>
+              <div className={styles.tileTag}>
+                <span className="hairline" />
+                <span className="mono-label">In Kinetic Studio</span>
+              </div>
+            </Link>
+            <Link
+              href="/studio"
+              className={cx(styles.tile, styles.tileGhost)}
+            >
+              <div className={styles.tileTop}>
+                <span className={styles.tileIndex}>08</span>
+                <StatusPill status="soon" />
+              </div>
+              <h3 className={styles.tileTitle}>Analytics</h3>
+              <p className={styles.tileBody}>
+                Every data point from the business in one place. The AI app you
+                already use reads the numbers and tells you what they mean.
+              </p>
+              <div className={styles.tileTag}>
+                <span className="hairline" />
+                <span className="mono-label">Your command center</span>
+              </div>
+            </Link>
+            <Link
+              href="/features#coming-soon"
+              className={cx(styles.tile, styles.tileGhost)}
+            >
+              <div className={styles.tileTop}>
+                <span className={styles.tileIndex}>09</span>
                 <StatusPill status="later" />
               </div>
               <h3 className={styles.tileTitle}>Kinetic Agents</h3>
