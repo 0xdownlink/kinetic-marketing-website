@@ -65,17 +65,10 @@ export default function HomePage() {
             <span className="mono-label mono-label--accent">
               § 00 — Kinetic Labs
             </span>
-            <a
-              href={COMPANY_URL}
-              className={styles.makerLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Created by {COMPANY}
-            </a>
+            <span className="mono-label">Created by {COMPANY}</span>
           </div>
 
-          <h1 id="hero-heading" className={styles.heroH1}>
+          <h1 id="hero-heading" className={cx(styles.heroH1, "rise")}>
             <span className={styles.heroLine1}>We connected</span>
             <span className={styles.heroLine2}>everything.</span>
             <span className={styles.heroLine3}>
@@ -84,7 +77,10 @@ export default function HomePage() {
             </span>
           </h1>
 
-          <div className={styles.heroSub}>
+          <div
+            className={cx(styles.heroSub, "rise")}
+            style={{ animationDelay: "0.18s" }}
+          >
             <p>
               Connect your domain, socials, email and phones once. Then say
               what you want: change the website, schedule a month of posts,
@@ -92,14 +88,17 @@ export default function HomePage() {
               before it goes live. Nothing ships until you say so.
             </p>
             <div className={styles.heroSubRail}>
-              <span className="mono-label">See it before it goes live.</span>
+              <span className="mono-label">Run it in Claude or ChatGPT,</span>
               <span className="mono-label mono-label--ink">
-                Nothing ships until you say so.
+                or let our team run it for you.
               </span>
             </div>
           </div>
 
-          <div className={styles.heroActions}>
+          <div
+            className={cx(styles.heroActions, "rise")}
+            style={{ animationDelay: "0.34s" }}
+          >
             <a href={STUDIO_URL} className="btn btn--primary">
               Open Kinetic Studio
               <Arrow />
@@ -109,7 +108,10 @@ export default function HomePage() {
             </a>
           </div>
 
-          <div className={styles.trustStrip}>
+          <div
+            className={cx(styles.trustStrip, "rise")}
+            style={{ animationDelay: "0.5s" }}
+          >
             <div className={styles.badge}>
               <span className={styles.badgeDot} aria-hidden="true" />
               <div>
@@ -392,9 +394,21 @@ function HeroMark() {
       fill="none"
       aria-hidden="true"
     >
-      <circle cx="60" cy="60" r="56" stroke="currentColor" strokeWidth="0.75" strokeDasharray="2 4" />
+      <circle
+        cx="60"
+        cy="60"
+        r="56"
+        stroke="currentColor"
+        strokeWidth="0.75"
+        strokeDasharray="2 4"
+      />
       <circle cx="60" cy="60" r="40" stroke="currentColor" strokeWidth="0.75" />
-      <path d="M20 60 L60 20 L100 60 L60 100 Z" stroke="currentColor" strokeWidth="1" fill="none" />
+      <path
+        d="M20 60 L60 20 L100 60 L60 100 Z"
+        stroke="currentColor"
+        strokeWidth="1"
+        fill="none"
+      />
       <circle cx="60" cy="60" r="6" fill="currentColor" />
     </svg>
   );
