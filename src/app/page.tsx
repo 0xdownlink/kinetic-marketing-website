@@ -40,7 +40,6 @@ function areaStatus(area: FeatureArea): FeatureStatus {
 }
 
 export default function HomePage() {
-  const coming = comingFeatures();
   return (
     <>
       {/* =========== HERO =========== */}
@@ -475,36 +474,6 @@ export default function HomePage() {
               </Link>
             </article>
           </div>
-        </div>
-      </section>
-
-      {/* =========== COMING SOON =========== */}
-      <section className={styles.coming} aria-labelledby="coming-heading">
-        <div className="container">
-          <header className={styles.sectionHead}>
-            <div className="section-tag">
-              <span>§ 07</span>
-              <span>Coming soon</span>
-            </div>
-            <h2 id="coming-heading" className={styles.sectionH2}>
-              Built, and <em>almost switched on.</em>
-            </h2>
-          </header>
-          <p className={styles.comingLede}>
-            We only call something live when it is. These are built and waiting
-            on a last step, like Google&apos;s approval.
-          </p>
-          <ul className={styles.comingList}>
-            {[...coming, ...roadmap].map((f) => (
-              <li key={f.title} className={styles.comingItem}>
-                <StatusPill status={f.status} />
-                <span className={styles.comingTitle}>{f.title}</span>
-              </li>
-            ))}
-          </ul>
-          <Link href="/features#coming-soon" className={styles.textLink}>
-            Everything that&apos;s live and coming <Arrow />
-          </Link>
         </div>
       </section>
 
