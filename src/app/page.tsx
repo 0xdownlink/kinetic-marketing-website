@@ -27,7 +27,7 @@ const AREA_BLURB: Record<FeatureArea, string> = {
   google:
     "Your Google listing and review replies from the same approved change.",
   media:
-    "Your own photos and footage, plus images made for you when you need one.",
+    "Your own photos and footage, plus AI generated photos and videos for when you need them for social content and more.",
   control:
     "Claude, ChatGPT or our team. Every change is a card you approve, and can undo.",
 };
