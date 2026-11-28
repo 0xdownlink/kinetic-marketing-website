@@ -1,591 +1,403 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import ClosingCTA from "@/components/ClosingCTA";
-import { Arrow, Crosshair } from "@/components/Mark";
-import { StatusPill } from "@/components/StatusPill";
+import { Arrow } from "@/components/Mark";
+import { SmartLink } from "@/components/SmartLink";
 import {
-  AREA_LABEL,
-  AREA_ORDER,
-  featuresIn,
-  type FeatureArea,
-  type FeatureStatus,
-} from "@/content/features";
-import { COMPANY, mailto, studio } from "@/content/site";
+  COMPANY,
+  COMPANY_URL,
+  STUDIO_URL,
+  mailto,
+  studio,
+} from "@/content/site";
 import { pageMetadata } from "@/lib/metadata";
 import styles from "./page.module.css";
 import { cx } from "@/lib/cx";
 
 export const metadata: Metadata = pageMetadata("home");
 
-const AREA_BLURB: Record<FeatureArea, string> = {
-  sites:
-    "Rebuild, change, and modify your site from a prompt. See it before it goes live, from the same approved change.",
-  social:
-    "A month of posts planned, written and designed, approved on one page, then scheduled.",
-  google:
-    "Your Google listing and review replies from the same approved change.",
-  media:
-    "Your own photos and footage, plus AI generated photos and videos for when you need them for social content and more.",
-  control:
-    "Claude, ChatGPT or our team. Every change is a card you approve, and can undo.",
-};
+const surfaces: readonly { title: string; body: string }[] = [
+  { title: "Domain & DNS", body: "Your domain, pointed and kept in step." },
+  { title: "Google", body: "Accounts connected to the same record." },
+  { title: "Email", body: "Draft and send from the dashboard." },
+  { title: "Website", body: "Prompt a change. See it before it ships." },
+  { title: "Social", body: "Plan, write, design and schedule posts." },
+  { title: "Drive", body: "Your own photos and files, ready to use." },
+  {
+    title: "Voice",
+    body: "Reception.AI by ElevenLabs answers from approved facts.",
+  },
+  { title: "Ads", body: "Draft campaigns from the same record." },
+  { title: "Creative", body: "Images and video for posts and pages." },
+];
 
-/** An area's status on the home tiles: the best status of anything in it. */
-function areaStatus(area: FeatureArea): FeatureStatus {
-  const order: FeatureStatus[] = ["now", "managed", "soon", "later"];
-  const statuses = featuresIn(area).map((f) => order.indexOf(f.status));
-  return order[Math.min(...statuses)] ?? "later";
-}
+const prompts: readonly { area: string; text: string }[] = [
+  {
+    area: "Website",
+    text: "Change hours to closed Thanksgiving, open Friday at 7.",
+  },
+  {
+    area: "Social",
+    text: "Plan a month of posts about winter service.",
+  },
+  {
+    area: "Campaign",
+    text: "Draft a campaign for the holiday special.",
+  },
+  {
+    area: "Voice",
+    text: "Put a voice agent on the phones that answers from our approved facts.",
+  },
+];
 
 export default function HomePage() {
   return (
     <>
-      {/* =========== HERO =========== */}
       <section className={styles.hero} aria-labelledby="hero-heading">
         <div className={styles.heroGrid} aria-hidden="true" />
-        <div className={styles.heroGlow} aria-hidden="true" />
-        <div className={styles.regMarks} aria-hidden="true">
-          <Crosshair />
-          <Crosshair />
-        </div>
-
         <div className={cx("container", styles.heroInner)}>
-          <div className={styles.heroMeta}>
-            <span className="mono-label mono-label--accent">
-              § 00 — Kinetic Labs
-            </span>
-            <span className="mono-label">Created by {COMPANY} · Rev. 2026</span>
-          </div>
-
-          <h1 id="hero-heading" className={cx(styles.heroH1, "rise")}>
-            <span className={styles.heroLine1}>Your business,</span>
-            <span className={styles.heroLine2}>right online.</span>
-            <span className={styles.heroLine3}>
-              <em>Nothing made up.</em>
-              <HeroMark />
-            </span>
-          </h1>
-
-          <div
-            className={cx(styles.heroSub, "rise")}
-            style={{ animationDelay: "0.18s" }}
-          >
-            <p>
-              AI builders make you a website. Kinetic keeps your website and
-              social posts right every week, from the AI app you already use.
-              You approve every change, and nothing about your business is
-              invented.
-            </p>
-            <div className={styles.heroSubRail}>
-              <span className="mono-label">Run it in Claude or ChatGPT,</span>
-              <span className="mono-label mono-label--ink">
-                or let our team run it for you.
+          <div className={styles.heroCopy}>
+            <div className={styles.heroMeta}>
+              <span className="mono-label mono-label--accent">
+                § 00 — Kinetic Labs
               </span>
+              <a
+                href={COMPANY_URL}
+                className={styles.makerLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Created by {COMPANY}
+              </a>
+            </div>
+
+            <h1 id="hero-heading" className={styles.heroH1}>
+              We connected everything.
+              <em> You just prompt it.</em>
+            </h1>
+
+            <p className={styles.heroSub}>
+              Connect your domain, socials, email and phones once. Then say
+              what you want: change the website, schedule a month of posts,
+              draft the campaign, put a voice agent on your phones. See it
+              before it goes live. Nothing ships until you say so.
+            </p>
+
+            <div className={styles.heroActions}>
+              <a href={STUDIO_URL} className="btn btn--primary">
+                Open Kinetic Studio
+                <Arrow />
+              </a>
+              <a href="#loop" className="btn btn--ghost">
+                See it in action
+              </a>
             </div>
           </div>
 
-          <div
-            className={cx(styles.heroActions, "rise")}
-            style={{ animationDelay: "0.34s" }}
-          >
-            <a href={studio.audit} className="btn btn--primary">
-              Get your free website check
-              <Arrow />
-            </a>
-            <Link href="/how-it-works" className="btn btn--ghost">
-              See how it works
-            </Link>
-          </div>
-
-          <div
-            className={cx(styles.trustStrip, "rise")}
-            style={{ animationDelay: "0.5s" }}
-          >
-            <div className={styles.badge}>
-              <span className={styles.badgeDot} aria-hidden="true" />
-              <div>
-                <p className={styles.badgeTitle}>Our accuracy promise</p>
-                <p className={styles.badgeSub}>
-                  Your facts, only the ones you approved
-                </p>
-              </div>
-            </div>
-            <dl className={styles.specLane}>
-              <div>
-                <dt className="mono-label">Works in</dt>
-                <dd>Claude · ChatGPT</dd>
-              </div>
-              <div>
-                <dt className="mono-label">Keeps right</dt>
-                <dd>Website · Social · Google (soon)</dd>
-              </div>
-              <div>
-                <dt className="mono-label">Created by</dt>
-                <dd>{COMPANY}</dd>
-              </div>
-            </dl>
-          </div>
+          <StudioProof />
         </div>
       </section>
 
-      {/* =========== PROBLEM =========== */}
       <section className={styles.problem} aria-labelledby="problem-heading">
         <div className="container">
           <header className={styles.sectionHead}>
-            <div className="section-tag">
+            <span className="section-tag">
               <span>§ 01</span>
               <span>The problem</span>
-            </div>
+            </span>
             <h2 id="problem-heading" className={styles.sectionH2}>
-              The website was the easy part.
+              Five tools. <em>Nothing talks.</em>
             </h2>
           </header>
-
           <ol className={styles.problemList}>
-            <li className={styles.problemItem}>
-              <span className={styles.problemNum}>01</span>
-              <h3>Your hours are wrong somewhere.</h3>
-              <p>
-                The site says one thing, Google says another, and last
-                year&apos;s holiday post is still pinned.
-              </p>
+            <li>
+              <span className={styles.num}>01</span>
+              <h3>Five logins.</h3>
+              <p>Website in one place. Social in another. Email somewhere else.</p>
             </li>
-            <li className={styles.problemItem}>
-              <span className={styles.problemNum}>02</span>
-              <h3>Nobody has time to post.</h3>
-              <p>
-                The Instagram went quiet in spring. The reviews are still
-                waiting for a reply.
-              </p>
+            <li>
+              <span className={styles.num}>02</span>
+              <h3>Hours drift.</h3>
+              <p>The site says one thing. Google says another. Last year’s post is still up.</p>
             </li>
-            <li className={styles.problemItem}>
-              <span className={styles.problemNum}>03</span>
-              <h3>AI tools guess.</h3>
-              <p>
-                Ask a builder for a site and you get a made-up &ldquo;serving
-                the area since 2005&rdquo; and five-star quotes from people who
-                don&apos;t exist.
-              </p>
+            <li>
+              <span className={styles.num}>03</span>
+              <h3>Socials go quiet.</h3>
+              <p>Nobody has time to plan a month of posts, then actually send them.</p>
+            </li>
+            <li>
+              <span className={styles.num}>04</span>
+              <h3>AI invents facts.</h3>
+              <p>Ask a builder for a site and you get a made-up year and quotes from people who don’t exist.</p>
             </li>
           </ol>
         </div>
       </section>
 
-      {/* =========== ONE SENTENCE =========== */}
-      <section className={styles.sentence} aria-labelledby="sentence-heading">
+      <section className={styles.system} aria-labelledby="system-heading">
         <div className="container">
           <header className={styles.sectionHead}>
-            <div className="section-tag">
+            <span className="section-tag">
               <span>§ 02</span>
-              <span>One sentence</span>
-            </div>
-            <h2 id="sentence-heading" className={styles.sectionH2}>
-              Say it once. <em>See it before it ships.</em>
+              <span>The system</span>
+            </span>
+            <h2 id="system-heading" className={styles.sectionH2}>
+              One place. <em>Everything connected.</em>
             </h2>
           </header>
-
-          <div className={styles.sentenceGrid}>
-            <div className={styles.sentenceCopy}>
-              <p className={styles.sentenceLede}>
-                Tell Kinetic what changed, in your own words, from Claude or
-                ChatGPT. It comes back with a card showing exactly what will
-                change and where.
-              </p>
-              <ul className={styles.sentencePoints}>
-                <li>
-                  <span className="mono-label mono-label--accent">Propose</span>
-                  Kinetic drafts the change. Nothing goes live yet.
-                </li>
-                <li>
-                  <span className="mono-label mono-label--accent">Approve</span>
-                  Untick anything you don&apos;t want, then approve in one tap.
-                </li>
-                <li>
-                  <span className="mono-label mono-label--accent">Undo</span>
-                  Changed your mind? One sentence puts it back.
-                </li>
-              </ul>
-              <Link href="/connect" className={styles.textLink}>
-                How it works in Claude and ChatGPT <Arrow />
-              </Link>
+          <p className={styles.lede}>
+            Connect once. Then every surface reads from one approved business
+            record. Credits power generation, ads, voice and updates.
+          </p>
+          <div className={styles.systemMap}>
+            <div className={styles.core}>
+              <span className="mono-label mono-label--accent">The brain</span>
+              <strong>One approved record</strong>
+              <span>Name, phone, hours, services, claims.</span>
             </div>
+            <ul className={styles.surfaceGrid}>
+              {surfaces.map((item) => (
+                <li key={item.title} className={styles.surface}>
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
 
+      <section className={styles.loop} id="loop" aria-labelledby="loop-heading">
+        <div className="container">
+          <header className={styles.sectionHead}>
+            <span className="section-tag">
+              <span>§ 03</span>
+              <span>The loop</span>
+            </span>
+            <h2 id="loop-heading" className={styles.sectionH2}>
+              Prompt. Preview. <em>Approve.</em>
+            </h2>
+          </header>
+          <div className={styles.loopGrid}>
+            <div>
+              <p className={styles.lede}>
+                Say what you want. Kinetic comes back with a card showing
+                exactly what will change and where. Nothing goes live until you
+                approve. One sentence undoes it.
+              </p>
+              <ol className={styles.promptList}>
+                {prompts.map((item, i) => (
+                  <li key={item.area}>
+                    <span className={styles.num}>{String(i + 1).padStart(2, "0")}</span>
+                    <div>
+                      <span className="mono-label mono-label--accent">{item.area}</span>
+                      <p>“{item.text}”</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
             <ChangeCard />
           </div>
         </div>
       </section>
 
-      {/* =========== WHAT IT KEEPS RIGHT =========== */}
-      <section className={styles.whatWeDo} aria-labelledby="what-heading">
-        <div className="container">
-          <header className={styles.sectionHead}>
-            <div className="section-tag">
-              <span>§ 03</span>
-              <span>What Kinetic keeps right</span>
-            </div>
-            <h2 id="what-heading" className={styles.sectionH2}>
-              One approved record. <br />
-              <em>Every place</em> customers look.
-            </h2>
-          </header>
-
-          <div className={styles.tiles}>
-            {AREA_ORDER.map((area, i) => (
-              <Link
-                key={area}
-                href={`/features#${area}`}
-                className={cx(styles.tile, i === 0 ? styles.tileFlame : "")}
-              >
-                <div className={styles.tileTop}>
-                  <span className={styles.tileIndex}>
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <StatusPill status={areaStatus(area)} />
-                </div>
-                <h3 className={styles.tileTitle}>{AREA_LABEL[area]}</h3>
-                <p className={styles.tileBody}>{AREA_BLURB[area]}</p>
-                <div className={styles.tileTag}>
-                  <span className="hairline" />
-                  <span className={styles.tileMore}>
-                    <span className="mono-label">
-                      {featuresIn(area).length} features
-                    </span>
-                    <span className={styles.tileArrow} aria-hidden="true">
-                      <svg
-                        width="20"
-                        height="14"
-                        viewBox="0 0 20 14"
-                        fill="none"
-                      >
-                        <path
-                          d="M1 7h17M13 1l5 6-5 6"
-                          stroke="currentColor"
-                          strokeWidth="1.2"
-                          strokeLinecap="square"
-                        />
-                      </svg>
-                    </span>
-                  </span>
-                </div>
-              </Link>
-            ))}
-            <Link
-              href="/studio"
-              className={cx(styles.tile, styles.tileGhost)}
-            >
-              <div className={styles.tileTop}>
-                <span className={styles.tileIndex}>06</span>
-                <StatusPill status="soon" />
-              </div>
-              <h3 className={styles.tileTitle}>Voice</h3>
-              <p className={styles.tileBody}>
-                Voice agents powered by Reception.AI by ElevenLabs. They answer
-                and handle calls the way a person would, from the same approved
-                record.
-              </p>
-              <div className={styles.tileTag}>
-                <span className="hairline" />
-                <span className="mono-label">In Kinetic Studio</span>
-              </div>
-            </Link>
-            <Link
-              href="/studio"
-              className={cx(styles.tile, styles.tileGhost)}
-            >
-              <div className={styles.tileTop}>
-                <span className={styles.tileIndex}>07</span>
-                <StatusPill status="soon" />
-              </div>
-              <h3 className={styles.tileTitle}>Email</h3>
-              <p className={styles.tileBody}>
-                Draft and send email from Kinetic Studio. Same record, same
-                approve-first rule.
-              </p>
-              <div className={styles.tileTag}>
-                <span className="hairline" />
-                <span className="mono-label">In Kinetic Studio</span>
-              </div>
-            </Link>
-            <Link
-              href="/studio"
-              className={cx(styles.tile, styles.tileGhost)}
-            >
-              <div className={styles.tileTop}>
-                <span className={styles.tileIndex}>08</span>
-                <StatusPill status="soon" />
-              </div>
-              <h3 className={styles.tileTitle}>Analytics</h3>
-              <p className={styles.tileBody}>
-                Every data point from the business in one place. The AI app you
-                already use reads the numbers and tells you what they mean.
-              </p>
-              <div className={styles.tileTag}>
-                <span className="hairline" />
-                <span className="mono-label">Your command center</span>
-              </div>
-            </Link>
-            <Link
-              href="/features#coming-soon"
-              className={cx(styles.tile, styles.tileGhost)}
-            >
-              <div className={styles.tileTop}>
-                <span className={styles.tileIndex}>09</span>
-                <StatusPill status="later" />
-              </div>
-              <h3 className={styles.tileTitle}>Kinetic Agents</h3>
-              <p className={styles.tileBody}>
-                The next part of Kinetic: agents that take on more of the
-                day-to-day work behind your business.
-              </p>
-              <div className={styles.tileTag}>
-                <span className="hairline" />
-                <span className="mono-label">See what&apos;s coming</span>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* =========== HOW IT WORKS =========== */}
-      <section className={styles.how} aria-labelledby="how-heading">
-        <div className="container">
-          <header className={styles.sectionHead}>
-            <div className="section-tag">
-              <span>§ 04</span>
-              <span>How it works</span>
-            </div>
-            <h2 id="how-heading" className={styles.sectionH2}>
-              Four steps. No black boxes.
-            </h2>
-          </header>
-
-          <ol className={styles.steps}>
-            <Step
-              step="01"
-              title="Check your site"
-              body="Paste your website. Kinetic reads it like a customer and like Google would, and shows what doesn't match."
-              deliverable="Free website check"
-            />
-            <Step
-              step="02"
-              title="Approve your record"
-              body="Your name, phone, hours, services and the claims you stand behind, in one record. It asks about anything that doesn't match."
-              deliverable="One source of truth"
-            />
-            <Step
-              step="03"
-              title="Get your site"
-              body="Kinetic drafts a site from that record, word for word where it matters. Our team reviews it with you before it goes live."
-              deliverable="A live site on your domain"
-            />
-            <Step
-              step="04"
-              title="Keep it right"
-              body="Tell Kinetic what changed. Approve the card, and it's live. Undo any time."
-              deliverable="Every week after launch"
-            />
-          </ol>
-          <Link href="/how-it-works" className={styles.textLink}>
-            The whole loop, step by step <Arrow />
-          </Link>
-        </div>
-      </section>
-
-      {/* =========== ACCURACY (the light band) =========== */}
-      <section className={styles.accuracy} aria-labelledby="accuracy-heading">
-        <div className={cx("container", styles.accuracyInner)}>
-          <div className={styles.accuracyHead}>
-            <span className={styles.accuracyTag}>
-              § 05 — Our accuracy promise
-            </span>
-            <h2 id="accuracy-heading" className={styles.accuracyH2}>
-              We never make up a review, a price <em>or a fact.</em>
+      <section className={styles.promise} aria-labelledby="promise-heading">
+        <div className={cx("container", styles.promiseInner)}>
+          <div>
+            <span className={styles.promiseTag}>§ 04 — The promise</span>
+            <h2 id="promise-heading" className={styles.promiseH2}>
+              Nothing invented. <em>Nothing ships without you.</em>
             </h2>
           </div>
-          <div className={styles.accuracyBody}>
+          <div className={styles.promiseBody}>
             <p>
-              Your facts come from one record you approve. AI writes the words
-              around them and isn&apos;t allowed to add anything new. If
-              something isn&apos;t confirmed, Kinetic asks you instead of
-              guessing.
+              Facts come from one record you approve. They are copied, never
+              written by AI. AI writes the words around them and is not allowed
+              to add a review, a rating, a price, a year, an award, a license
+              or a stat.
             </p>
-            <dl className={styles.accuracySpec}>
+            <dl className={styles.promiseSpec}>
               <div>
                 <dt>Your facts</dt>
-                <dd>Copied, never written by AI</dd>
-              </div>
-              <div>
-                <dt>Before publishing</dt>
-                <dd>Fact-checked against your record</dd>
+                <dd>Copied, never invented</dd>
               </div>
               <div>
                 <dt>Every change</dt>
-                <dd>Shown first, approved by you, undoable</dd>
+                <dd>Shown first, then approved</dd>
+              </div>
+              <div>
+                <dt>Changed your mind</dt>
+                <dd>One sentence undoes it</dd>
               </div>
             </dl>
-            <Link href="/accuracy" className={styles.accuracyLink}>
+            <Link href="/accuracy" className={styles.promiseLink}>
               Read the full promise <Arrow />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* =========== TWO WAYS =========== */}
       <section className={styles.ways} aria-labelledby="ways-heading">
         <div className="container">
           <header className={styles.sectionHead}>
-            <div className="section-tag">
-              <span>§ 06</span>
-              <span>Two ways to use it</span>
-            </div>
+            <span className="section-tag">
+              <span>§ 05</span>
+              <span>Three ways to run it</span>
+            </span>
             <h2 id="ways-heading" className={styles.sectionH2}>
-              Do it in a sentence, <em>or hand it to us.</em>
+              Run it yourself, <em>or hand it to us.</em>
             </h2>
           </header>
-
           <div className={styles.waysGrid}>
-            <article className={styles.wayCard}>
-              <span className="mono-label mono-label--accent">
-                A · Yourself
-              </span>
-              <h3>In your AI app</h3>
+            <article className={styles.way}>
+              <span className="mono-label mono-label--accent">01 · Studio</span>
+              <h3>Do it yourself</h3>
               <p>
-                Connect Kinetic to Claude or ChatGPT and run your business
-                online in plain sentences. No new dashboard to learn.
+                Prompt from Kinetic Studio, or from Claude or ChatGPT. Same
+                record. Same approval card.
               </p>
-              <Link href="/connect" className="btn btn--ghost">
-                Connect Kinetic
+              <Link href="/studio" className="btn btn--ghost">
+                See Studio
               </Link>
             </article>
-            <article className={cx(styles.wayCard, styles.wayCardHero)}>
-              <span className="mono-label mono-label--accent">
-                B · Done for you
-              </span>
-              <h3>Kinetic Managed</h3>
+            <article className={cx(styles.way, styles.wayHero)}>
+              <span className="mono-label mono-label--accent">02 · Managed</span>
+              <h3>We run it</h3>
               <p>
-                {COMPANY}&apos;s team runs Kinetic for your business, checks in
-                with you, and is accountable for the result. You only approve
-                what goes out.
+                Our team runs the same system for your business and checks in
+                with you. A person is accountable. You approve what goes out.
               </p>
               <Link href="/managed" className="btn btn--primary">
                 See Managed <Arrow />
               </Link>
             </article>
-          </div>
-        </div>
-      </section>
-
-      {/* =========== HONEST FIT =========== */}
-      <section className={styles.fit} aria-labelledby="fit-heading">
-        <div className="container">
-          <header className={styles.sectionHead}>
-            <div className="section-tag">
-              <span>§ 08</span>
-              <span>Honest fit</span>
-            </div>
-            <h2 id="fit-heading" className={styles.sectionH2}>
-              Who it&apos;s for. <em>Who it isn&apos;t.</em>
-            </h2>
-          </header>
-          <div className={styles.fitGrid}>
-            <div className={styles.fitCol}>
-              <p className="mono-label mono-label--accent">A good fit if you</p>
-              <ul>
-                <li>Run a local service business or restaurant</li>
-                <li>
-                  Want your site, listings and posts right without doing it
-                  every week
-                </li>
-                <li>Would rather approve than build</li>
-              </ul>
-            </div>
-            <div className={cx(styles.fitCol, styles.fitColNo)}>
-              <p className="mono-label">Not for you if you</p>
-              <ul>
-                <li>Are building an app or a software product</li>
-                <li>Want to design pages by hand</li>
-                <li>Run a large online store</li>
-              </ul>
-              <p className={styles.fitNote}>
-                An app builder or site builder will suit you better, and
-                we&apos;ll say so.
+            <article className={styles.way}>
+              <span className="mono-label mono-label--accent">03 · Agents</span>
+              <h3>Custom agents</h3>
+              <p>
+                Agents that take on more of the day-to-day work behind the
+                business. Same rules: they propose, you approve.
               </p>
-            </div>
+              <Link href="/agents" className="btn btn--ghost">
+                See Agents
+              </Link>
+            </article>
           </div>
         </div>
       </section>
 
-      {/* =========== CREATED BY =========== */}
       <section className={styles.maker} aria-labelledby="maker-heading">
         <div className={cx("container", styles.makerInner)}>
           <span className="mono-label mono-label--accent">
-            § 09 — Who&apos;s behind it
+            § 06 — Who built it
           </span>
           <h2 id="maker-heading" className={styles.makerH2}>
             Kinetic Labs is created by <em>{COMPANY}.</em>
           </h2>
           <p>
-            {COMPANY} is an AI-first company that builds AI agents, online
-            presence and online marketing for businesses. We build Kinetic,
-            support it, and run it for Managed clients. A person is accountable,
-            not just a chatbot.
+            {COMPANY} is an AI-first company building AI agents, online
+            presence and online marketing. They did the connecting and the
+            coding so you never have to. A person is accountable, not just a
+            chatbot.
           </p>
+          <a
+            href={COMPANY_URL}
+            className={styles.makerLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {COMPANY} <Arrow />
+          </a>
         </div>
       </section>
 
-      <ClosingCTA
-        title={
-          <>
-            See what&apos;s wrong online today. <em>Free.</em>
-          </>
-        }
-        body="Paste your website and Kinetic checks your phone, hours, address, broken links and whether Google can list your pages. Read-only, and no account needed."
-        secondaryHref={mailto("Kinetic for my business")}
-      />
+      <section className={styles.cta} aria-labelledby="cta-heading">
+        <div className={cx("container", styles.ctaInner)}>
+          <span className="mono-label mono-label--accent">§ 07 — Next step</span>
+          <h2 id="cta-heading" className={styles.ctaH2}>
+            Open Kinetic Studio.
+          </h2>
+          <p>
+            Connect once. Then prompt the change, the posts, the campaign, the
+            voice agent. See it before it goes live.
+          </p>
+          <div className={styles.ctaActions}>
+            <a href={STUDIO_URL} className="btn btn--primary">
+              Open Kinetic Studio <Arrow />
+            </a>
+            <a href={studio.audit} className="btn btn--ghost">
+              Free website check
+            </a>
+            <SmartLink href="/contact" className="btn btn--ghost">
+              Talk to us
+            </SmartLink>
+          </div>
+          <span className={styles.micro}>
+            Or email{" "}
+            <a href={mailto("Kinetic")}>hello@gokinetic.tech</a>.
+          </span>
+        </div>
+      </section>
     </>
   );
 }
 
-/* ------------------------------------------------------------------ */
-
-function Step({
-  step,
-  title,
-  body,
-  deliverable,
-}: {
-  step: string;
-  title: string;
-  body: string;
-  deliverable: string;
-}) {
+function StudioProof() {
   return (
-    <li className={styles.step}>
-      <div className={styles.stepHead}>
-        <span className={styles.stepNum}>{step}</span>
-        <span className={styles.stepRule} aria-hidden="true" />
+    <figure className={styles.proof} aria-label="Kinetic Studio: a prompt being typed, and a preview of the website change before it goes live.">
+      <div className={styles.proofBar} aria-hidden="true">
+        <span />
+        <span />
+        <span />
+        <em>Kinetic Studio</em>
       </div>
-      <h3 className={styles.stepTitle}>{title}</h3>
-      <p className={styles.stepBody}>{body}</p>
-      <p className={styles.stepDeliverable}>
-        <span className="mono-label">You get</span>
-        <span>{deliverable}</span>
-      </p>
-    </li>
+      <div className={styles.proofBody}>
+        <aside className={styles.proofSide} aria-hidden="true">
+          <span>Connected</span>
+          <ul>
+            <li>Domain</li>
+            <li>Google</li>
+            <li>Email</li>
+            <li>Website</li>
+            <li>Social</li>
+            <li>Drive</li>
+            <li>Voice</li>
+          </ul>
+        </aside>
+        <div className={styles.proofMain}>
+          <div className={styles.promptBox} aria-hidden="true">
+            <span className="mono-label">Prompt</span>
+            <p>
+              <span className={styles.typed}>
+                Change hours to closed Thanksgiving, open Friday at 7.
+              </span>
+              <span className={styles.caret} />
+            </p>
+          </div>
+          <div className={styles.preview} aria-hidden="true">
+            <span className="mono-label">Preview · not live</span>
+            <div className={styles.previewSite}>
+              <strong>Northside Plumbing</strong>
+              <span>Hours</span>
+              <em>Closed Thanksgiving · Open Friday 7am</em>
+            </div>
+          </div>
+        </div>
+      </div>
+      <figcaption className="sr">
+        A Kinetic Studio view: you type a prompt to change hours, and the
+        website preview updates before anything goes live.
+      </figcaption>
+    </figure>
   );
 }
 
-/**
- * An illustration of a change card, the way Kinetic shows one in an AI app.
- * It's a picture of the flow, not a live control, so it's hidden from the
- * accessibility tree and described in text beside it.
- */
 function ChangeCard() {
   return (
     <figure className={styles.card}>
       <div className={styles.cardChat} aria-hidden="true">
         <span className={styles.cardWho}>You</span>
-        <p>We&apos;re closed Thanksgiving, and open Black Friday at 7.</p>
+        <p>We’re closed Thanksgiving, and open Friday at 7.</p>
       </div>
       <div className={styles.cardBody} aria-hidden="true">
         <div className={styles.cardHead}>
@@ -595,21 +407,10 @@ function ChangeCard() {
           <span className="mono-label">Not live yet</span>
         </div>
         <ul className={styles.cardLines}>
-          <CardLine
-            checked
-            label="Business record"
-            detail="Holiday hours for Nov 26 and Nov 27"
-          />
-          <CardLine
-            checked
-            label="Website"
-            detail="Hours updated, holiday banner added"
-          />
-          <CardLine
-            label="Social post"
-            detail="Suggested: a post about the holiday hours"
-          />
-          <CardLine soon label="Google listing" detail="Special hours" />
+          <CardLine checked label="Business record" detail="Holiday hours" />
+          <CardLine checked label="Website" detail="Hours and banner" />
+          <CardLine label="Social post" detail="Suggested holiday post" />
+          <CardLine label="Voice agent" detail="New hours on the phones" />
         </ul>
         <div className={styles.cardActions}>
           <span className={styles.cardApprove}>Approve</span>
@@ -617,10 +418,9 @@ function ChangeCard() {
         </div>
       </div>
       <figcaption className="sr">
-        Example: you tell Kinetic you&apos;re closed on Thanksgiving. Kinetic
-        proposes one change with a line for your business record, your website
-        and an optional social post, and nothing goes live until you approve.
-        The Google listing line is coming soon.
+        Example change card. You say the hours changed. Kinetic proposes the
+        record, the website, a social post and the voice agent. Nothing goes
+        live until you approve.
       </figcaption>
     </figure>
   );
@@ -630,61 +430,18 @@ function CardLine({
   label,
   detail,
   checked,
-  soon,
 }: {
   label: string;
   detail: string;
   checked?: boolean;
-  soon?: boolean;
 }) {
   return (
-    <li className={cx(styles.cardLine, soon ? styles.cardLineSoon : "")}>
+    <li className={styles.cardLine}>
       <span className={cx(styles.cardCheck, checked ? styles.cardChecked : "")}>
         {checked ? "✓" : ""}
       </span>
       <span className={styles.cardLabel}>{label}</span>
-      <span className={styles.cardDetail}>{soon ? "Coming soon" : detail}</span>
+      <span className={styles.cardDetail}>{detail}</span>
     </li>
-  );
-}
-
-function HeroMark() {
-  return (
-    <svg
-      className={styles.heroMark}
-      width="120"
-      height="120"
-      viewBox="0 0 120 120"
-      fill="none"
-      aria-hidden="true"
-    >
-      <circle
-        cx="60"
-        cy="60"
-        r="56"
-        stroke="currentColor"
-        strokeWidth="0.75"
-        strokeDasharray="2 4"
-      />
-      <circle cx="60" cy="60" r="40" stroke="currentColor" strokeWidth="0.75" />
-      <path
-        d="M20 60 L60 20 L100 60 L60 100 Z"
-        stroke="currentColor"
-        strokeWidth="1"
-        fill="none"
-      />
-      <circle cx="60" cy="60" r="6" fill="currentColor" />
-      <text
-        x="60"
-        y="118"
-        textAnchor="middle"
-        fontFamily="var(--font-plex-mono)"
-        fontSize="6"
-        letterSpacing="2"
-        fill="currentColor"
-      >
-        KIN-A · 001
-      </text>
-    </svg>
   );
 }
