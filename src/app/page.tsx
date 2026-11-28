@@ -6,9 +6,7 @@ import { StatusPill } from "@/components/StatusPill";
 import {
   AREA_LABEL,
   AREA_ORDER,
-  comingFeatures,
   featuresIn,
-  roadmap,
   type FeatureArea,
   type FeatureStatus,
 } from "@/content/features";
