@@ -661,8 +661,7 @@
   .promiseInner,
   .waysGrid,
   .problemList,
-  .surfaceGrid,
-  .proofBody {
+  .surfaceGrid {
     grid-template-columns: 1fr;
   }
   .sectionHead {
@@ -676,11 +675,7 @@
     border-right: 0;
     border-bottom: 1px solid var(--rule);
   }
-  .proofSide {
-    border-right: 0;
-    border-bottom: 1px solid var(--rule);
-  }
-  .promiseSpec {
+    .promiseSpec {
     grid-template-columns: 1fr;
   }
   .heroH1 {
