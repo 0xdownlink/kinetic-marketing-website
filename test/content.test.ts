@@ -183,7 +183,7 @@ describe("Anth.Tech created Kinetic Agents", () => {
       /Kinetic Agents is created by <strong>\{COMPANY\}<\/strong>/,
     );
     expect(read("app/layout.tsx")).toMatch(/<CreatorBanner \/>/);
-    expect(read("app/page.tsx")).toMatch(/Kinetic Agents is created by/);
+    expect(read("app/page.tsx")).toMatch(/Kinetic Labs is created by/);
     expect(
       faq.some((item) => item.a.includes(`${COMPANY} created Kinetic Agents`)),
     ).toBe(true);
