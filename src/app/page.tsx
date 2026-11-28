@@ -522,7 +522,7 @@ export default function HomePage() {
             § 09 — Who&apos;s behind it
           </span>
           <h2 id="maker-heading" className={styles.makerH2}>
-            Kinetic Agents is created by <em>{COMPANY}.</em>
+            Kinetic Labs is created by <em>{COMPANY}.</em>
           </h2>
           <p>
             {COMPANY} is an AI-first company that builds AI agents, online
